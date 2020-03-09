@@ -34,12 +34,18 @@ try:
   font = ImageFont.truetype(path + "/Arial.ttf", 24)
 
   img = Image.open('/tmp/elake.jpg')
+
+  top = 1400
+  left = 280
+  img = img.crop((left,top,left + 3000,top + 800))
+  img = img.resize((1500, 400))
+
   draw = ImageDraw.Draw(img)
   draw.rectangle((0,0,420,24), fill="#ffffff")
-  draw.text((0,0), "ELAKE - Bottom Sock - " + now.strftime("%d/%m/%y %H:%M"), (0,0,0), font)
-  img.save('/tmp/elake-1.jpg')
+  draw.text((0,0), "ELAKE - " + now.strftime("%d/%m/%y %H:%M"), (0,0,0), font)
+  img.save('/tmp/elake.jpg')
   
-  f = open('/tmp/elake-1.jpg', 'rb')
+  f = open('/tmp/elake.jpg', 'rb')
   ftp.storbinary('STOR /elake/elake-temp.jpg', f)
   ftp.rename('/elake/elake-temp.jpg', '/elake/elake.jpg')
 
