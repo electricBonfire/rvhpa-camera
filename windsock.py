@@ -3,6 +3,9 @@ from picamera import PiCamera, Color
 from ftplib import FTP
 import os
 from datetime import datetime
+from PIL import Image 
+from PIL import ImageDraw
+from PIL import ImageFont
 
 try:
     upload_ftp = os.getenv('RVHPA_FTP_URL')
@@ -17,9 +20,9 @@ try:
     camera = PiCamera()
     camera.resolution = (3280, 2464)
     camera.start_preview()
-    camera.annotate_text = "  Elake  "
-    camera.annotate_background = Color('#f12362')
-    sleep(2)
+    # camera.annotate_text = "  Elake  "
+    # camera.annotate_background = Color('#f12362')
+    # sleep(2)
     camera.zoom = (0,0,0,0)
     camera.capture('/tmp/elake.jpg')
 finally:
@@ -32,7 +35,7 @@ try:
   draw = ImageDraw.Draw(f)
   draw.rectangle((0,0,420,24), fill="#ffffff")
   draw.text((0,0), "ELAKE - Bottom Sock - " + now.strftime("%d/%m/%y %H:%M"), (0,0,0), font)
-  im1.save()
+  f.save('/tmp/elake.jpg')
   ftp.storbinary('STOR /elake/elake-temp.jpg', f)
   ftp.rename('/elake/elake-temp.jpg', '/elake/elake.jpg')
 
