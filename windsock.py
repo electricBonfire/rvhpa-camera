@@ -29,9 +29,11 @@ finally:
     camera.close()
 
 try:
-  img = Image.open('/tmp/elake.jpg')
   now = datetime.now()
-  font = ImageFont.truetype("Arial.ttf", 24)
+  path = os.path.dirname(os.path.realpath(__file__))  
+  font = ImageFont.truetype(path + "/Arial.ttf", 24)
+
+  img = Image.open('/tmp/elake.jpg')
   draw = ImageDraw.Draw(img)
   draw.rectangle((0,0,420,24), fill="#ffffff")
   draw.text((0,0), "ELAKE - Bottom Sock - " + now.strftime("%d/%m/%y %H:%M"), (0,0,0), font)
