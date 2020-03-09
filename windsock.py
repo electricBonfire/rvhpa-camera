@@ -29,7 +29,7 @@ finally:
     camera.close()
 
 try:
-  f = open('/tmp/elake.jpg', 'rb')
+  f = open('/tmp/elake.jpg', 'wb+')
   now = datetime.now()
   font = ImageFont.truetype("Arial.ttf", 24)
   draw = ImageDraw.Draw(f)
@@ -43,7 +43,7 @@ except e:
     print('Exception: %s' % (e,))
     try:
         ftp.close()
-        ftp = FTP(upload_ftp, upload_user, upload_password)
+        # ftp = FTP(upload_ftp, upload_user, upload_password)
     except f:
         print('Error, %s and %s' % (e, f))
 #time.sleep(300)
