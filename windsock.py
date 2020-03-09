@@ -19,7 +19,7 @@ try:
     camera.annotate_text = "  Elake  "
     camera.annotate_background = Color('#f12362')
     sleep(2)
-    camera.zoom = (0.35,0.35,0.65,0.65)
+    camera.zoom = (0,0,0,0)
     camera.capture('/tmp/elake.jpg')
 finally:
     camera.close()

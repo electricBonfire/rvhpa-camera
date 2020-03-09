@@ -79,7 +79,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 with picamera.PiCamera(resolution='640x480', framerate=24) as camera:
     output = StreamingOutput()
     camera.annotate_text = "  Elake  "
-    #camera.resolution = (3280, 2464)
+    camera.resolution = (3280, 2464)
     camera.annotate_background = picamera.Color('#f12362')
     camera.start_recording(output, format='mjpeg')
     try:
