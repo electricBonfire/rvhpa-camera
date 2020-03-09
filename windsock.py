@@ -20,9 +20,9 @@ try:
     camera = PiCamera()
     camera.resolution = (3280, 2464)
     camera.start_preview()
-    camera.annotate_text = "  Elake  "
-    camera.annotate_background = Color('#f12362')
-    sleep(2)
+    # camera.annotate_text = "  Elake  "
+    # camera.annotate_background = Color('#f12362')
+    # sleep(2)
     camera.zoom = (0,0,0,0)
     camera.capture('/tmp/elake.jpg')
 finally:
@@ -45,7 +45,7 @@ except e:
     print('Exception: %s' % (e,))
     try:
         ftp.close()
-        ftp = FTP(upload_ftp, upload_user, upload_password)
+        # ftp = FTP(upload_ftp, upload_user, upload_password)
     except f:
         print('Error, %s and %s' % (e, f))
 #time.sleep(300)
