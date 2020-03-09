@@ -37,7 +37,8 @@ try:
   draw.text((0,0), "ELAKE - Bottom Sock - " + now.strftime("%d/%m/%y %H:%M"), (0,0,0), font)
   img.save('/tmp/elake-1.jpg')
   
-  ftp.storbinary('STOR /elake/elake-temp.jpg', img)
+  f = open('/tmp/elake-1.jpg', 'rb')
+  ftp.storbinary('STOR /elake/elake-temp.jpg', f)
   ftp.rename('/elake/elake-temp.jpg', '/elake/elake.jpg')
 
 except e:
