@@ -41,13 +41,26 @@ try:
   img = img.resize((1500, 400))
 
   draw = ImageDraw.Draw(img)
-  draw.rectangle((0,0,420,24), fill="#ffffff")
-  draw.text((0,0), "ELAKE - " + now.strftime("%d/%m/%y %H:%M"), (0,0,0), font)
-  img.save('/tmp/elake.jpg')
+  draw.rectangle((0,0,300,24), fill="#ffffff")
+  draw.text((0,0), "ELAKE - " + now.strftime("%d/%m/%y %I:%M %p"), (0,0,0), font)
+  img.save('/tmp/elake1.jpg')
+
+  img2 = Image.open('/tmp/elake.jpg')
+
+  img2 = img2.crop((400,1300,1000, 1900))
+  draw = ImageDraw.Draw(img2)
+  draw.rectangle((0,0,300,24), fill="#ffffff")
+  draw.text((0,0), "ELAKE - " + now.strftime("%d/%m/%y %I:%M %p"), (0,0,0), font)
+  img2.save('/tmp/elake2.jpg')
+
   
-  f = open('/tmp/elake.jpg', 'rb')
+  f = open('/tmp/elake1.jpg', 'rb')
   ftp.storbinary('STOR /elake/elake-temp.jpg', f)
   ftp.rename('/elake/elake-temp.jpg', '/elake/elake.jpg')
+
+  f2 = open('/tmp/elake2.jpg', 'rb')
+  ftp.storbinary('STOR /elake/elake2-temp.jpg', f2)
+  ftp.rename('/elake/elake2-temp.jpg', '/elake/elake2.jpg')
 
 except e:
     print('Exception: %s' % (e,))
