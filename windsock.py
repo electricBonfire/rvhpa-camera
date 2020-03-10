@@ -35,7 +35,7 @@ try:
 
   img = Image.open('/tmp/elake.jpg')
 
-  top = 1400
+  top = 1200
   left = 280
   img = img.crop((left,top,left + 3000,top + 800))
   img = img.resize((1500, 400))
